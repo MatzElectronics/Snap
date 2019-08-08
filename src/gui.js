@@ -964,7 +964,8 @@ IDE_Morph.prototype.createControlBar = function () {
         //cloudButton.setRight(settingsButton.left() - padding);
 
         projectButton.setCenter(myself.controlBar.center());
-        projectButton.setRight(cloudButton.left() - padding);
+        //projectButton.setRight(cloudButton.left() - padding);
+        projectButton.setRight(settingsButton.left() - padding);
 
         this.refreshSlider();
         this.updateLabel();
