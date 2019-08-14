@@ -296,16 +296,19 @@ IDE_Morph.prototype.openIn = function (world) {
         }
     }
 
+/*
     if (location.protocol !== 'file:') {
         if (!sessionStorage.username) {
             // check whether login should persist across browser sessions
             this.cloud.initSession(initUser);
         } else {
+*/
             // login only persistent during a single browser session
             this.cloud.checkCredentials(initUser);
+/*
         }
     }
-
+*/
     this.buildPanes();
     world.add(this);
     world.userMenu = this.userMenu;
@@ -627,7 +630,7 @@ IDE_Morph.prototype.createControlBar = function () {
         stageSizeButton,
         appModeButton,
         steppingButton,
-        cloudButton,
+//        cloudButton,
         x,
         colors = [
             this.groupColor,
@@ -2597,10 +2600,10 @@ IDE_Morph.prototype.cloudMenu = function () {
         pos = this.controlBar.cloudButton.bottomLeft(),
         shiftClicked = (world.currentKey === 16);
 
-    if (location.protocol === 'file:' && !shiftClicked) {
+//    if (location.protocol === 'file:' && !shiftClicked) {
         this.showMessage('cloud unavailable without a web server.');
         return;
-    }
+//    }
 
     menu = new MenuMorph(this);
     if (shiftClicked) {
@@ -3851,7 +3854,7 @@ IDE_Morph.prototype.save = function () {
 
     // temporary hack - only allow exporting projects to disk
     // when running Snap! locally without a web server
-    if (location.protocol === 'file:') {
+//    if (location.protocol === 'file:') {
         if (this.projectName) {
             this.exportProject(myself.projectName, false);
         } else {
@@ -3860,7 +3863,7 @@ IDE_Morph.prototype.save = function () {
             }, null, 'exportProject');
         }
         return;
-    }
+//    }
 
     if (this.source === 'examples' || this.source === 'local') {
         // cannot save to examples, deprecated localStorage
@@ -4931,7 +4934,7 @@ IDE_Morph.prototype.toggleAppMode = function (appMode) {
     var world = this.world(),
         elements = [
             this.logo,
-            this.controlBar.cloudButton,
+//            this.controlBar.cloudButton,
             this.controlBar.projectButton,
             this.controlBar.settingsButton,
             this.controlBar.steppingButton,
@@ -5087,7 +5090,7 @@ IDE_Morph.prototype.createNewProject = function () {
 };
 
 IDE_Morph.prototype.openProjectsBrowser = function () {
-    if (location.protocol === 'file:') {
+//    if (location.protocol === 'file:') {
         // bypass the project import dialog and directly pop up
         // the local file picker.
         // this should not be necessary, we should be able
@@ -5095,8 +5098,8 @@ IDE_Morph.prototype.openProjectsBrowser = function () {
         // to be worked on.... (jens)
         this.importLocalFile();
         return;
-    }
-    new ProjectDialogMorph(this, 'open').popUp();
+//    }
+//    new ProjectDialogMorph(this, 'open').popUp();
 };
 
 IDE_Morph.prototype.saveProjectsBrowser = function () {
@@ -5104,17 +5107,17 @@ IDE_Morph.prototype.saveProjectsBrowser = function () {
 
     // temporary hack - only allow exporting projects to disk
     // when running Snap! locally without a web server
-    if (location.protocol === 'file:') {
+//    if (location.protocol === 'file:') {
         this.prompt('Export Project As...', function (name) {
             myself.exportProject(name, false);
         }, null, 'exportProject');
         return;
-    }
+//    }
 
-    if (this.source === 'examples') {
-        this.source = null; // cannot save to examples
-    }
-    new ProjectDialogMorph(this, 'save').popUp();
+//    if (this.source === 'examples') {
+//        this.source = null; // cannot save to examples
+//    }
+//    new ProjectDialogMorph(this, 'save').popUp();
 };
 
 // IDE_Morph microphone settings
@@ -6078,7 +6081,7 @@ ProjectDialogMorph.prototype.buildContents = function () {
         this.srcBar.add(notification);
     }
 
-    this.addSourceButton('cloud', localize('Cloud'), 'cloud');
+    //this.addSourceButton('cloud', localize('Cloud'), 'cloud');
 
     if (this.task === 'open') {
         this.buildFilterField();
