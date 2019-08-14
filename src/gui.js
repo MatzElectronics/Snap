@@ -3195,12 +3195,13 @@ IDE_Morph.prototype.projectMenu = function () {
         shiftClicked = (world.currentKey === 16);
 
     menu = new MenuMorph(this);
-    menu.addItem('Project notes...', 'editProjectNotes');
-    menu.addLine();
+//    menu.addItem('Project notes...', 'editProjectNotes');
+//    menu.addLine();
     menu.addPair('New', 'createNewProject', '^N');
     menu.addPair('Open...', 'openProjectsBrowser', '^O');
     menu.addPair('Save', "save", '^S');
     menu.addItem('Save As...', 'saveProjectsBrowser');
+/*
     menu.addLine();
     menu.addItem(
         'Import...',
@@ -3274,13 +3275,14 @@ IDE_Morph.prototype.projectMenu = function () {
                 '\nnot supported by all browsers',
             new Color(100, 0, 0)
         );
+*/
         menu.addItem(
             'Export all scripts as pic...',
             function () {myself.exportScriptsPicture(); },
             'show a picture of all scripts\nand block definitions',
             new Color(100, 0, 0)
         );
-    }
+//    }
 
     menu.addLine();
     menu.addItem(
