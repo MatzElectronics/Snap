@@ -341,6 +341,7 @@ XML_Element.prototype.parseStream = function (stream) {
     while (ch !== '>' && ch !== '/') {
         key = stream.word();
         stream.skipSpace();
+        console.log(stream);
         if (stream.next() !== '=') {
             throw new Error('Expected "=" after attribute name');
         }
