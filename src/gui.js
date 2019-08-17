@@ -432,6 +432,7 @@ IDE_Morph.prototype.openIn = function (world) {
                     || hash.search(/\%(?:[0-9a-f]{2})/i) > -1) {
                 hash = decodeURIComponent(hash);
             }
+	    console.log(hash);
             if (hash.substr(0, 8) === '<project>') {
                 this.rawOpenProjectString(hash);
             } else {
