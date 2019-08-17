@@ -433,7 +433,7 @@ IDE_Morph.prototype.openIn = function (world) {
                 hash = decodeURIComponent(hash);
             }
 	    console.log(hash);
-            if (hash.substr(0, 7) === '<project') {
+            if (hash.substr(0, 8) === '<project') {
                 this.rawOpenProjectString(hash);
             } else {
                 this.rawOpenProjectString(getURL(hash));
