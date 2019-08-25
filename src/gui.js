@@ -3280,8 +3280,8 @@ IDE_Morph.prototype.projectMenu = function () {
         menu.addItem(
             'Export all scripts as pic...',
             function () {myself.exportScriptsPicture(); },
-            'show a picture of all scripts\nand block definitions',
-            new Color(100, 0, 0)
+            'show a picture of all scripts\nand block definitions' // ,
+            //new Color(100, 0, 0)
         );
 //    }
 
