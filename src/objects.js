@@ -689,7 +689,7 @@ SpriteMorph.prototype.initBlocks = function () {
         // Control
         projectBlankLabel: {
             type: 'command',
-            category: 'control',
+            category: 'other',
             spec: 'student %s period %n project %s'
         },
 	receiveGo: {
