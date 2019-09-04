@@ -687,7 +687,12 @@ SpriteMorph.prototype.initBlocks = function () {
         },
 
         // Control
-        receiveGo: {
+        projectBlankLabel: {
+            type: 'command',
+            category: 'control',
+            spec: 'student %s period %n project %s'
+        },
+	receiveGo: {
             type: 'hat',
             category: 'control',
             spec: 'when %greenflag clicked'
@@ -2331,6 +2336,8 @@ SpriteMorph.prototype.blockTemplates = function (category) {
 
     } else if (cat === 'control') {
 
+        blocks.push(block('projectBlankLabel'));
+        blocks.push('-');
         blocks.push(block('receiveGo'));
         blocks.push(block('receiveKey'));
         blocks.push(block('receiveInteraction'));
@@ -8288,6 +8295,8 @@ StageMorph.prototype.blockTemplates = function (category) {
 
     } else if (cat === 'control') {
 
+        blocks.push(block('projectBlankLabel'));
+        blocks.push('-');
         blocks.push(block('receiveGo'));
         blocks.push(block('receiveKey'));
         blocks.push(block('receiveInteraction'));
