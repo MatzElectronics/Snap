@@ -302,10 +302,8 @@ IDE_Morph.prototype.openIn = function (world) {
             // check whether login should persist across browser sessions
             this.cloud.initSession(initUser);
         } else {
-*/
             // login only persistent during a single browser session
             this.cloud.checkCredentials(initUser);
-/*
         }
     }
 */
