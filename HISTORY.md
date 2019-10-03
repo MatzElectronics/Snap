@@ -2,12 +2,6 @@
 
 ## in development:
 * **New Features:**
-* **Notable Changes:**
-* **Notable Fixes:**
-* **Translation Updates:**
-
-## v5.1.0
-* **New Features:**
     * new "paste on" block in the pen category, prints a sprite onto another one
     * new "r-g-b-a" option in "(aspect) AT (location)" sensing reporter, returns a 4-item list of values from 0-255 (same as pixels from a costume)
     * "temporary?" attribute is now programmatically settable (in the SET->my... block)
@@ -15,16 +9,9 @@
     * generated costumes that are not in the wardrobe are now made persistent in the project (saved & restored)
 * **Notable Fixes:**
     * fixed tainted audio context for auto-playing projects when the user interacts, thanks, Bernat!
-    * saved clones no longer forget if they inherit the "costume #" attribute
 * **Translation Updates:**
     * German
     * Galician, thanks, Miguel!
-
-### 2019-08-08
-* store: allow wardrobe-less costumes to be shared among several sprites (e.g. when inheriting the "costume #" attribute)
-* objects: fixed an issue when a sprite inherits both the wardrobe and the costume #
-* store, objects: fixed the bug that made clones forget inheritance of costume # when saved
-* prepared minor release
 
 ### 2019-08-07
 * new dev version

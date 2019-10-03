@@ -61,7 +61,7 @@ normalizeCanvas, contains*/
 
 // Global stuff ////////////////////////////////////////////////////////
 
-modules.store = '2019-August-08';
+modules.store = '2019-August-07';
 
 
 // XML_Serializer ///////////////////////////////////////////////////////
@@ -520,13 +520,9 @@ SnapSerializer.prototype.rawLoadProjectModel = function (xmlNode, remixID) {
             }
         });
         if (sprite.inheritsAttribute('costumes')) {
-            if (sprite.inheritsAttribute('costume #')) {
-                costume = sprite.exemplar.costume;
-            } else {
-                costume = sprite.costumes.asArray()[
-                    sprite.inheritanceInfo.costumeNumber - 1
-                ];
-            }
+            costume = sprite.costumes.asArray()[
+                sprite.inheritanceInfo.costumeNumber - 1
+            ];
             if (costume) {
                 if (costume.loaded) {
                     sprite.wearCostume(costume, true);
@@ -789,21 +785,16 @@ SnapSerializer.prototype.loadObject = function (object, model) {
     this.loadNestingInfo(object, model);
 
     // load the costume that's not in the wardrobe, if any
-    node = model.childNamed('wear');
+    node = model.childNamed('costume');
     if (node) {
-        node = node.childNamed('costume') || node.childNamed('ref');
-        if (!node) {
-            console.log(object.name + ': missing costume to wear');
+        costume = this.loadValue(node, object);
+        if (costume.loaded) {
+            object.wearCostume(costume, true);
         } else {
-            costume = this.loadValue(node, object);
-            if (costume.loaded) {
+            costume.loaded = function () {
                 object.wearCostume(costume, true);
-            } else {
-                costume.loaded = function () {
-                    object.wearCostume(costume, true);
-                    this.loaded = true;
-                };
-            }
+                this.loaded = true;
+            };
         }
     }
 
@@ -1778,9 +1769,7 @@ StageMorph.prototype.toXML = function (serializer) {
         normalizeCanvas(this.trailsCanvas, true).toDataURL('image/png'),
 
         // current costume, if it's not in the wardrobe
-        !costumeIdx && this.costume ?
-            '<wear>' + serializer.store(this.costume) + '</wear>'
-                : '',
+        !costumeIdx && this.costume ? serializer.store(this.costume) : '',
 
         serializer.store(this.costumes, this.name + '_cst'),
         serializer.store(this.sounds, this.name + '_snd'),
@@ -1876,9 +1865,7 @@ SpriteMorph.prototype.toXML = function (serializer) {
             : '',
 
         // current costume, if it's not in the wardrobe
-        !costumeIdx && this.costume ?
-            '<wear>' + serializer.store(this.costume) + '</wear>'
-                : '',
+        !costumeIdx && this.costume ? serializer.store(this.costume) : '',
 
         noCostumes ? '' : serializer.store(this.costumes, this.name + '_cst'),
         noSounds ? '' : serializer.store(this.sounds, this.name + '_snd'),
