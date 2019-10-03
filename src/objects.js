@@ -84,7 +84,7 @@ BlockEditorMorph, BlockDialogMorph, PrototypeHatBlockMorph,  BooleanSlotMorph,
 localize, TableMorph, TableFrameMorph, normalizeCanvas, VectorPaintEditorMorph,
 HandleMorph, AlignmentMorph, Process, XML_Element, WorldMap*/
 
-modules.objects = '2019-August-08';
+modules.objects = '2019-August-07';
 
 var SpriteMorph;
 var StageMorph;
@@ -1915,12 +1915,12 @@ SpriteMorph.prototype.drawNew = function () {
             cst = this.costume;
             handle = setInterval(
                 function () {
-                    myself.wearCostume(cst, true);
+                    myself.wearCostume(cst);
                     clearInterval(handle);
                 },
                 100
             );
-            return myself.wearCostume(null, true);
+            return myself.wearCostume(null);
 
         }
     }
@@ -6509,15 +6509,7 @@ SpriteMorph.prototype.refreshInheritedAttribute = function (aName) {
         break;
     case 'costume #':
         this.cachedPropagation = true;
-        if (this.inheritsAttribute('costumes')) {
-            // if inheriting the whole wardrobe,
-            // just switch to the exemplar's costume
-            this.wearCostume(this.exemplar.costume, true);
-        } else {
-            // otherwise switch to the own costume of the
-            // corresponing number
-            this.doSwitchToCostume(this.getCostumeIdx(), true);
-        }
+        this.doSwitchToCostume(this.getCostumeIdx(), true);
         break;
     case 'volume':
         this.cachedPropagation = true;
