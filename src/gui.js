@@ -3198,8 +3198,8 @@ IDE_Morph.prototype.projectMenu = function () {
 //    menu.addLine();
     menu.addPair('New', 'createNewProject', '^N');
     menu.addPair('Open...', 'openProjectsBrowser', '^O');
-    menu.addPair('Save', "save", '^S');
-    menu.addItem('Save As...', 'saveProjectsBrowser');
+    menu.addPair('Save (XML)', "save", '^S');
+    menu.addItem('Save As... (XML)', 'saveProjectsBrowser');
 /*
     menu.addLine();
     menu.addItem(
@@ -3276,7 +3276,7 @@ IDE_Morph.prototype.projectMenu = function () {
         );
 */
         menu.addItem(
-            'Export all scripts as pic...',
+            'Export as an Image (PNG)',
             function () {myself.exportScriptsPicture(); },
             'show a picture of all scripts\nand block definitions' // ,
             //new Color(100, 0, 0)
